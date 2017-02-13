@@ -1,0 +1,60 @@
+﻿@model Banco.Web.Models.SucursalViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Create", "", new { @class = "btn btn-info" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sucursal_ID)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.Banco.Banco_Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sucursal_Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sucursal_Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sucursal_FechaRegistro)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.ListaSucursal) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sucursal_ID)
+        </td>
+ 
+        <td>
+            @Html.DisplayFor(modelItem => item.Banco.Banco_Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sucursal_Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sucursal_Direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sucursal_FechaRegistro)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", item, new { @class = "btn btn-warning" }) |
+      
+            @Html.ActionLink("Borrar", "Delete", item, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

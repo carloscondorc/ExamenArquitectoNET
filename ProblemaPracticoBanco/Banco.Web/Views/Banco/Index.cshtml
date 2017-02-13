@@ -1,0 +1,47 @@
+﻿@model Banco.Web.Models.BancoViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Nuevo", "Create", "", new { @class = "btn btn-info" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Banco_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Banco_Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Banco_Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Banco_FechaRegistro)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model.ListaBanco)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Banco_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Banco_Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Banco_Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Banco_FechaRegistro)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", item, new { @class = "btn btn-warning" }) 
+                 @Html.ActionLink("Borrar", "Delete", item, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+</table>

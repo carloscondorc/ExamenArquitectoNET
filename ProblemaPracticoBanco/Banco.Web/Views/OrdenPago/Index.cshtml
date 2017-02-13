@@ -1,0 +1,68 @@
+﻿@model Banco.Web.Models.OrdenPagoViewModel
+
+@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Create","", new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrdenPago_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sucursal.Sucursal_Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Moneda.Moneda_Abreviatura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoOrden.EstadoOrden_Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrdenPago_FechaPago)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrdenPago_Monto)
+        </th>
+ 
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.ListaOrdenPago) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrdenPago_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sucursal.Sucursal_Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Moneda.Moneda_Abreviatura)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstadoOrden.EstadoOrden_Nombre)
+        </td>
+       
+
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.OrdenPago_FechaPago)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrdenPago_Monto)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", item, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Borrar", "Delete", item, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

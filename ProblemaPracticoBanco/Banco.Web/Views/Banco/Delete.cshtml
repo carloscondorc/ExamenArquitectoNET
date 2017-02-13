@@ -1,0 +1,57 @@
+﻿@model Banco.Web.Models.BancoViewModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Banco</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Banco_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Banco_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Banco_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Banco_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Banco_Direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Banco_Direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Banco_FechaRegistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Banco_FechaRegistro)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Regresar", "Index", "", new { @class = "btn btn-info" })
+        </div>
+    }
+</div>

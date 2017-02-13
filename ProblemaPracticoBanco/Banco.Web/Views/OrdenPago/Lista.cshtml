@@ -1,0 +1,64 @@
+﻿@model Banco.Web.Models.OrdenPagoViewModel
+@{
+    ViewBag.Title = "Servicios API";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Consulta</h2>
+@using (Html.BeginForm("Lista", "OrdenPago", FormMethod.Post))
+{
+    <fieldset>
+        <legend>Seleccion Datos</legend>
+        @Html.Label("buscar", "Sucursal:")
+        @Html.DropDownListFor(model => model.Sucursal_ID, new SelectList(Model.ListaSucursalCombo, "Sucursal_ID", "Sucursal_Nombre") as SelectList, "[Seleccione]", new { htmlAttributes = new { @class = "form-control" } })
+        @Html.Label("buscar", "Moneda:")
+        @*@Html.DropDownListFor(model => model.Moneda_ID, new SelectList(Model.ListaMonedaCombo, "Moneda_ID", "Moneda_Nombre") as SelectList, "[Seleccione]", new { htmlAttributes = new { @class = "form-control" } })*@
+        <input type="submit" value="Buscar" class="btn btn-primary" />
+    </fieldset>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrdenPago_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sucursal_ID)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.Moneda)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoOrden_Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrdenPago_Monto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrdenPago_FechaPago)
+        </th>OrdenPago_Monto
+    </tr>
+    @foreach (var item in Model.ListaOrdenPago)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrdenPago_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sucursal_Nombre)
+            </td>
+   
+            <td>
+                @Html.DisplayFor(modelItem => item.Moneda_Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstadoOrden_Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrdenPago_Monto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrdenPago_FechaPago)
+            </td>
+        </tr>
+    }
+</table>
